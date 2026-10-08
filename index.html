@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script data-goatcounter="https://samsdigits.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam's Digital Instruments — Free Clock, Calculator & Converter Tools</title>
+<meta name="description" content="A small, growing collection of free, fast web tools: a flip clock with world-time comparison, a basic and scientific calculator, and a unit and currency converter. No sign-up, no clutter.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samsdigitalinstruments.pages.dev/">
+<meta property="og:title" content="Sam's Digital Instruments — Free Clock, Calculator & Converter Tools">
+<meta property="og:description" content="A small, growing collection of free, fast web tools. No sign-up, no clutter.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samsdigitalinstruments.pages.dev/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sam's Digital Instruments — Free Clock, Calculator & Converter Tools">
+<meta name="twitter:description" content="A small, growing collection of free, fast web tools. No sign-up, no clutter.">
+<!-- Once you create a Google Search Console account, paste your verification meta tag here, e.g.: -->
+<meta name="google-site-verification" content="5kA5aiMael0OMFiTy81zZiRR19ssG4AjTBRuRiOoYuk" />
+<!-- Once you have a real Google AdSense account, paste the site verification meta tag / script AdSense gives you here -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sam's Digital Instruments",
+  "url": "https://samsdigitalinstruments.pages.dev/"
+}
+</script>
+</head>
+<body>
+<!--
+  ARCHITECTURE NOTE:
+  Each tool now lives on its own page (clock.html, calculator.html, converter.html) with its
+  own metadata, structured data, and tool-specific FAQ. This homepage is a lightweight
+  directory: intro, featured tool cards, and categories. Future tools (age-calculator.html,
+  gst-calculator.html, etc.) slot into the same category system and card pattern used here —
+  no redesign needed to add them. A search bar is intentionally not implemented yet; the
+  category/card structure is what a future search would filter over.
+-->
+
+  <div class="statusbar">
+    <div class="live"><span class="dot"></span><span id="statusTime">--:--:--</span></div>
+    <div id="statusZone">local time</div>
+  </div>
+
+  <header class="hero">
+    <p class="wordmark">Sam's Digital Instruments</p>
+    <h1>Three small tools, one quiet page.</h1>
+    <p class="sub">A small, growing collection of free, fast web tools — pick one below to get started. No sign-up, no clutter, no tracking.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-label">Featured Tools</h2>
+      <div class="tool-directory">
+        <a class="tool-card" href="clock.html">
+          <span class="cat">Time Tools</span>
+          <h2>Clock</h2>
+          <p>A flip clock with 12/24-hour display, plus a world clock row to compare times across cities at a glance.</p>
+          <span class="go">Open the clock →</span>
+        </a>
+        <a class="tool-card" href="calculator.html">
+          <span class="cat">Calculators</span>
+          <h2>Calculator</h2>
+          <p>Everyday arithmetic in basic mode, with a Scientific toggle for trigonometry, logarithms, and powers.</p>
+          <span class="go">Open the calculator →</span>
+        </a>
+        <a class="tool-card" href="converter.html">
+          <span class="cat">Converters</span>
+          <h2>Converter</h2>
+          <p>Convert length, weight, and temperature instantly, plus live currency exchange rates.</p>
+          <span class="go">Open the converter →</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">Categories</h2>
+      <div class="categories">
+        <span class="category-tag">Time Tools</span>
+        <span class="category-tag">Calculators</span>
+        <span class="category-tag">Converters</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">Why Sam's Digital Instruments?</h2>
+      <div class="prose">
+        <p>Most calculator and converter sites bury the actual tool under ads, pop-ups, and a sign-up wall before you can type in a single number. Sam's Digital Instruments exists as the opposite of that — pick a tool, get your answer, nothing standing in the way.</p>
+        <p>The site is deliberately small. There's no framework to download, no tracking scripts running in the background, and no account to create. Every calculation happens right in your browser — nothing you type is sent anywhere or stored anywhere.</p>
+        <p>A world clock, a calculator, and a converter cover a huge share of the small, everyday questions people actually search for — what time is it there, what's 15% of this bill, how many kilometres is that in miles. Each one works the same whether you're on a phone, a tablet, or a full-size monitor.</p>
+        <p>There's no roadmap trying to turn this into something bigger than it needs to be. If a new tool gets added, it'll be because it's genuinely useful and fits the same idea: open the page, get your answer, move on with your day.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- SUPPORT — kept as its own section, separate from the footer. -->
+  <section style="text-align:center; padding:0 22px;">
+    <div class="upi-support">
+      <div class="upi-qr"><img src="upi-qr.png" alt="UPI QR code for supporting Sam's Digital Instruments"></div>
+      <a class="coffee-btn" href="upi://pay?pa=adityasameer@oksbi&pn=Sam&cu=INR">☕ Support via UPI</a>
+      <button class="upi-id-copy" id="upiIdCopy" type="button">adityasameer@oksbi <span id="upiCopyLabel">📋 copy</span></button>
+      <p class="upi-hint">On mobile, the button opens your UPI app directly. On desktop, scan the QR with your phone, or copy the ID above.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div>&copy; 2026 Sam's Digital Instruments</div>
+  </footer>
+
+<script>
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function updateStatus(){
+    const now = new Date();
+    document.getElementById('statusTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    try{ document.getElementById('statusZone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  }
+  setInterval(updateStatus, 1000);
+  updateStatus();
+
+  document.getElementById('upiIdCopy').addEventListener('click', () => {
+    navigator.clipboard.writeText('adityasameer@oksbi').then(() => {
+      const label = document.getElementById('upiCopyLabel');
+      label.textContent = '✓ copied';
+      setTimeout(() => { label.textContent = '📋 copy'; }, 1800);
+    });
+  });
+</script>
+</body>
+</html>

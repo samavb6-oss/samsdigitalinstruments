@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script data-goatcounter="https://samsdigits.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Sam's Digital Instruments</title>
+<meta name="description" content="Terms of Service for Sam's Digital Instruments — acceptable use, accuracy, availability, and liability for the clock, calculator, and converter tools.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samsdigitalinstruments.pages.dev/terms.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="statusbar">
+    <div class="live"><span class="dot"></span><span id="statusTime">--:--:--</span></div>
+    <div id="statusZone">local time</div>
+  </div>
+  <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">Terms of Service</span></nav>
+
+  <div class="page-wrap">
+    <p class="wordmark">Sam's Digital Instruments</p>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: [update this date when you publish]</p>
+
+    <p>These Terms of Service ("Terms") govern your use of Sam's Digital Instruments (the "Site"). By using the Site, you agree to these Terms. If you don't agree, please don't use the Site.</p>
+
+    <h2>Acceptable use</h2>
+    <p>The Site is provided for personal, everyday use of its tools. You agree not to misuse the Site, including attempting to disrupt its operation, scrape or republish it wholesale, or use it for any unlawful purpose.</p>
+
+    <h2>Accuracy</h2>
+    <p>The tools on this Site are provided for general, everyday convenience. While reasonable care is taken, calculations (including currency conversion rates, unit conversions, and time zone data) are not guaranteed to be error-free or continuously up to date, and should not be relied on for financial, legal, medical, or other decisions where precise, verified figures are required.</p>
+
+    <h2>Availability</h2>
+    <p>The Site is provided on an "as available" basis. We don't guarantee uninterrupted access, and the Site or individual tools may be modified, suspended, or discontinued at any time without notice.</p>
+
+    <h2>Intellectual property</h2>
+    <p>The design, layout, and code of this Site are the property of Sam's Digital Instruments unless otherwise noted. You may use the tools for personal purposes; you may not copy, redistribute, or resell the Site's design or code without permission.</p>
+
+    <h2>Third-party services</h2>
+    <p>The currency converter relies on a third-party exchange-rate API. We are not responsible for the accuracy, availability, or continued operation of third-party services the Site depends on.</p>
+
+    <h2>Limitation of liability</h2>
+    <p>To the fullest extent permitted by law, Sam's Digital Instruments and its creator are not liable for any indirect, incidental, or consequential damages arising from your use of, or inability to use, the Site or any results it provides.</p>
+
+    <h2>Changes to these Terms</h2>
+    <p>These Terms may be updated from time to time. Continued use of the Site after changes are posted constitutes acceptance of the updated Terms.</p>
+
+    <a class="back" href="index.html">← Back to Sam's Digital Instruments</a>
+  </div>
+
+<script>
+function pad(n){ return n.toString().padStart(2,'0'); }
+function updateStatus(){
+  const now = new Date();
+  document.getElementById('statusTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  try{ document.getElementById('statusZone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+}
+setInterval(updateStatus, 1000);
+updateStatus();
+</script>
+</body>
+</html>

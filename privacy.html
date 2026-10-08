@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script data-goatcounter="https://samsdigits.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Sam's Digital Instruments</title>
+<meta name="description" content="Privacy policy for Sam's Digital Instruments — clock, calculator and converter tools. Hosting, data collection, cookies, and third-party services explained.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samsdigitalinstruments.pages.dev/privacy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="statusbar">
+    <div class="live"><span class="dot"></span><span id="statusTime">--:--:--</span></div>
+    <div id="statusZone">local time</div>
+  </div>
+  <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">Privacy Policy</span></nav>
+
+  <div class="page-wrap">
+    <p class="wordmark">Sam's Digital Instruments</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: [update this date when you publish]</p>
+
+    <p>This page explains what happens to information when you use this website (the "Site"). This Site is a small set of free tools — a clock, a calculator, and a unit/currency converter — and does not require an account or ask you to submit personal information to use them.</p>
+
+    <h2>Hosting</h2>
+    <p>This Site is hosted on Cloudflare Pages. Cloudflare, as the hosting provider, may process standard technical request data (such as IP address and browser type) as part of delivering the page to you, in line with <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's own privacy policy</a>. This Site itself does not separately access or store that data.</p>
+
+    <h2>Information we collect</h2>
+    <p>We do not directly collect names, email addresses, or other personal details through any tool on this Site. Values you type into the calculator or converter stay in your browser and are not sent to us.</p>
+
+    <h2>Cookies</h2>
+    <p>This Site uses GoatCounter, a privacy-focused analytics service, to measure website usage. GoatCounter does not use cookies or persistent identifiers to track visitors.</p>
+
+    <h2>Advertising (not yet active)</h2>
+    <p>This Site does not currently display any advertising. If it does in the future (for example, through Google AdSense), ads may be served by third-party advertising companies that use cookies or similar technologies to show ads based on your visits to this and other websites. Before that happens, this section will be updated with specifics, and you'll be able to opt out of personalized advertising via <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google's Ads Settings</a> or <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener">aboutads.info/choices</a>.</p>
+
+    <h2>Third-party data used by the tools</h2>
+    <p>The currency converter fetches live exchange rates directly from your browser via a third-party public API (open.er-api.com). No personal information is sent as part of that request — only the currency conversion request itself.</p>
+
+    <h2>Analytics</h2>
+    <p>This Site uses GoatCounter to understand website traffic and usage and to help improve the Site. GoatCounter provides website usage statistics such as page views, referrers, browser information, and approximate geographic information without using cookies or persistent identifiers to track visitors.</p>
+
+    <h2>Children's privacy</h2>
+    <p>This Site is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date at the top.</p>
+
+    <a class="back" href="index.html">← Back to Sam's Digital Instruments</a>
+  </div>
+
+<script>
+function pad(n){ return n.toString().padStart(2,'0'); }
+function updateStatus(){
+  const now = new Date();
+  document.getElementById('statusTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  try{ document.getElementById('statusZone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+}
+setInterval(updateStatus, 1000);
+updateStatus();
+</script>
+</body>
+</html>

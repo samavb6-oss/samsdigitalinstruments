@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script data-goatcounter="https://samsdigits.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Sam's Digital Instruments</title>
+<meta name="description" content="General frequently asked questions about Sam's Digital Instruments — privacy, cost, and how the site works. Tool-specific questions live on each tool's own page.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samsdigitalinstruments.pages.dev/faq.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Are these tools free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free, with no usage limits, no premium tier, and no account required." } },
+    { "@type": "Question", "name": "Do I need to sign up or create an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. Every tool works immediately with no login, no email address, and no registration of any kind." } },
+    { "@type": "Question", "name": "What data do you collect?", "acceptedAnswer": { "@type": "Answer", "text": "SamsDigits uses GoatCounter to understand website traffic and usage. Nothing you type into the calculator or other tools is collected or stored by SamsDigits. See the Privacy Policy for full details." } },
+    { "@type": "Question", "name": "Do calculations happen locally, in my browser?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, for the clock, calculator, and unit converter. Only the currency converter makes a network request, to fetch live exchange rates." } },
+    { "@type": "Question", "name": "Can I use these tools on my phone or tablet?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every page is fully responsive and works the same way on a phone, tablet, laptop, or desktop monitor." } },
+    { "@type": "Question", "name": "Why is the website so lightweight?", "acceptedAnswer": { "@type": "Answer", "text": "It's built with plain HTML, CSS, and JavaScript — no framework, no build step, minimal code — so it loads quickly even on a slow connection." } },
+    { "@type": "Question", "name": "Will more tools be added?", "acceptedAnswer": { "@type": "Answer", "text": "Possibly, if they fit the same idea: genuinely useful, fast, and simple. Nothing is added just to pad the site out." } },
+    { "@type": "Question", "name": "Is the website open to everyone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — it's free and publicly accessible to anyone, with no region restrictions or access requirements." } }
+  ]
+}
+</script>
+</head>
+<body>
+  <div class="statusbar">
+    <div class="live"><span class="dot"></span><span id="statusTime">--:--:--</span></div>
+    <div id="statusZone">local time</div>
+  </div>
+  <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">FAQ</span></nav>
+
+  <div class="page-wrap">
+    <p class="wordmark">Sam's Digital Instruments</p>
+    <h1>Frequently Asked Questions</h1>
+    <p style="color:var(--text-dim); font-size:13.5px; margin-top:-10px; margin-bottom:24px;">General questions about the site. Looking for something tool-specific? Each tool page (<a href="clock.html">Clock</a>, <a href="calculator.html">Calculator</a>, <a href="converter.html">Converter</a>) has its own FAQ too.</p>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h2>Are these tools free to use?</h2>
+        <p>Yes, completely free, with no usage limits, no premium tier, and no account required.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Do I need to sign up or create an account?</h2>
+        <p>No. Every tool works immediately with no login, no email address, and no registration of any kind.</p>
+      </div>
+      <div class="faq-item">
+        <h2>What data do you collect?</h2>
+        <p>SamsDigits uses GoatCounter to understand website traffic and usage. Nothing you type into any tool is collected or stored by SamsDigits. See the <a href="privacy.html">Privacy Policy</a> for full details.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Do calculations happen locally, in my browser?</h2>
+        <p>Yes, for the clock, calculator, and unit converter. Only the currency converter makes a network request, to fetch live exchange rates.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Can I use these tools on my phone or tablet?</h2>
+        <p>Yes. Every page is fully responsive and works the same way on a phone, tablet, laptop, or desktop monitor.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Why is the website so lightweight?</h2>
+        <p>It's built with plain HTML, CSS, and JavaScript — no framework, no build step, minimal code — so it loads quickly even on a slow connection.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Will more tools be added?</h2>
+        <p>Possibly, if they fit the same idea: genuinely useful, fast, and simple. Nothing is added just to pad the site out.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Is the website open to everyone?</h2>
+        <p>Yes — it's free and publicly accessible to anyone, with no region restrictions or access requirements.</p>
+      </div>
+    </div>
+
+    <a class="back" href="index.html">← Back to Sam's Digital Instruments</a>
+  </div>
+
+<script>
+function pad(n){ return n.toString().padStart(2,'0'); }
+function updateStatus(){
+  const now = new Date();
+  document.getElementById('statusTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  try{ document.getElementById('statusZone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+}
+setInterval(updateStatus, 1000);
+updateStatus();
+</script>
+</body>
+</html>

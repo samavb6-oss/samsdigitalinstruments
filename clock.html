@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script data-goatcounter="https://samsdigits.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flip Clock & World Clock — Sam's Digital Instruments</title>
+<meta name="description" content="A free flip clock with 12/24-hour display and a live world clock row — compare the time in London, Tokyo, New York, Mumbai, or any city you add, against your own local time.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samsdigitalinstruments.pages.dev/clock.html">
+<meta property="og:title" content="Flip Clock & World Clock — Sam's Digital Instruments">
+<meta property="og:description" content="A free flip clock with a live world clock row to compare time zones at a glance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samsdigitalinstruments.pages.dev/clock.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Flip Clock & World Clock",
+  "url": "https://samsdigitalinstruments.pages.dev/clock.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://samsdigitalinstruments.pages.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Clock", "item": "https://samsdigitalinstruments.pages.dev/clock.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does the clock use my local time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — it reads the time directly from your device's system clock, so it's accurate as long as your device's clock is set correctly." } },
+    { "@type": "Question", "name": "Can I compare multiple time zones at once?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The world clock row shows several cities by default, and you can add any city from the dropdown to keep comparing its time against yours." } },
+    { "@type": "Question", "name": "Does it switch between 12-hour and 24-hour format?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, using the 24H/12H toggle above the clock. 12-hour mode adds an AM/PM indicator automatically." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <div class="statusbar">
+    <div class="live"><span class="dot"></span><span id="statusTime">--:--:--</span></div>
+    <div id="statusZone">local time</div>
+  </div>
+
+  <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">Clock</span></nav>
+
+  <header class="hero">
+    <p class="wordmark">Sam's Digital Instruments</p>
+    <h1>Flip Clock &amp; World Clock</h1>
+    <p class="sub">Quickly check the time in another city before you call or message someone, without installing an app or searching each time zone separately.</p>
+  </header>
+
+  <main>
+    <section>
+      <div class="panel">
+        <div class="mode-toggle">
+          <button class="mode-btn active" data-mode="24">24H</button>
+          <button class="mode-btn" data-mode="12">12H</button>
+        </div>
+        <div class="flip-clock" id="flipClock">
+          <div class="flip-group" id="grpHours">
+            <div class="flip-unit" id="h-tens"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+            <div class="flip-unit" id="h-ones"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+          </div>
+          <div class="flip-sep">:</div>
+          <div class="flip-group" id="grpMinutes">
+            <div class="flip-unit" id="m-tens"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+            <div class="flip-unit" id="m-ones"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+          </div>
+          <div class="flip-sep">:</div>
+          <div class="flip-group" id="grpSeconds">
+            <div class="flip-unit" id="s-tens"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+            <div class="flip-unit" id="s-ones"><div class="flip-card"><div class="flip-face front">0</div><div class="flip-face back">0</div></div></div>
+          </div>
+          <div class="ampm" id="ampmBadge" style="display:none;">AM</div>
+        </div>
+        <div class="flip-date" id="bigDate">—</div>
+
+        <div class="clock-grid" id="clockGrid"></div>
+
+        <div class="add-row">
+          <div class="field">
+            <label for="tzSelect">Add a city</label>
+            <select id="tzSelect"></select>
+          </div>
+          <button class="action" id="addTzBtn" style="margin-top:19px;">Add clock</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">How it works</h2>
+      <div class="prose">
+        <p>The main clock reads the time directly from your device — phone, tablet, or computer — so it stays accurate without needing an internet connection once the page has loaded. Switch between 12-hour and 24-hour display with the toggle above the clock; 12-hour mode adds an AM/PM indicator next to the seconds.</p>
+        <p>The world clock row underneath is useful for scheduling a call or checking whether it's a reasonable hour to message someone in another time zone. Add any city from the dropdown to keep a running comparison against your local time — the hour difference is shown under each card, so you don't have to do the math yourself.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">Clock FAQ</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Does the clock use my local time?</h3>
+          <p>Yes — it reads the time directly from your device's system clock, so it's accurate as long as your device's clock is set correctly.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I compare multiple time zones at once?</h3>
+          <p>Yes. The world clock row shows several cities by default, and you can add any city from the dropdown to keep comparing its time against yours.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does it switch between 12-hour and 24-hour format?</h3>
+          <p>Yes, using the 24H/12H toggle above the clock. 12-hour mode adds an AM/PM indicator automatically.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">Related Tools</h2>
+      <div class="related-tools">
+        <a href="calculator.html">Calculator →</a>
+        <a href="converter.html">Converter →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div>&copy; 2026 Sam's Digital Instruments</div>
+  </footer>
+
+<script>
+function pad(n){ return n.toString().padStart(2,'0'); }
+
+function setFlipDigit(unitId, newVal){
+  newVal = String(newVal);
+  const unit = document.getElementById(unitId);
+  const card = unit.querySelector('.flip-card');
+  const front = unit.querySelector('.flip-face.front');
+  const back = unit.querySelector('.flip-face.back');
+  if(front.textContent === newVal) return;
+  if(card.dataset.flipping === '1'){
+    card.style.transition = 'none';
+    card.classList.remove('flip');
+    front.textContent = back.textContent;
+    void card.offsetWidth;
+    card.style.transition = '';
+  }
+  if(front.textContent === newVal){ card.dataset.flipping = '0'; return; }
+  back.textContent = newVal;
+  card.dataset.flipping = '1';
+  card.classList.add('flip');
+  clearTimeout(card._flipTimer);
+  card._flipTimer = setTimeout(() => {
+    card.style.transition = 'none';
+    card.classList.remove('flip');
+    front.textContent = newVal;
+    void card.offsetWidth;
+    card.style.transition = '';
+    card.dataset.flipping = '0';
+  }, 520);
+}
+
+function setDigitInstant(unitId, val){
+  val = String(val);
+  const unit = document.getElementById(unitId);
+  const card = unit.querySelector('.flip-card');
+  const front = unit.querySelector('.flip-face.front');
+  const back = unit.querySelector('.flip-face.back');
+  clearTimeout(card._flipTimer);
+  card.style.transition = 'none';
+  card.classList.remove('flip');
+  front.textContent = val;
+  back.textContent = val;
+  void card.offsetWidth;
+  card.style.transition = '';
+  card.dataset.flipping = '0';
+}
+
+function getTimeParts(){
+  const now = new Date();
+  const hours24 = now.getHours();
+  const ampm = hours24 >= 12 ? 'PM' : 'AM';
+  let displayHours = hours24;
+  if(clockMode === '12'){
+    displayHours = hours24 % 12;
+    if(displayHours === 0) displayHours = 12;
+  }
+  return { hh: pad(displayHours), mm: pad(now.getMinutes()), ss: pad(now.getSeconds()), ampm, now };
+}
+
+let clockMode = '24';
+
+function updateStatusAndClock(){
+  const { hh, mm, ss, ampm, now } = getTimeParts();
+  document.getElementById('statusTime').textContent = clockMode === '12' ? `${hh}:${mm}:${ss} ${ampm}` : `${hh}:${mm}:${ss}`;
+  setFlipDigit('h-tens', hh[0]); setFlipDigit('h-ones', hh[1]);
+  setFlipDigit('m-tens', mm[0]); setFlipDigit('m-ones', mm[1]);
+  setFlipDigit('s-tens', ss[0]); setFlipDigit('s-ones', ss[1]);
+  const badge = document.getElementById('ampmBadge');
+  if(clockMode === '12'){ badge.style.display = 'flex'; badge.textContent = ampm; }
+  else{ badge.style.display = 'none'; }
+  document.getElementById('bigDate').textContent = now.toLocaleDateString(undefined,{ weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  try{ document.getElementById('statusZone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+}
+setInterval(updateStatusAndClock, 1000);
+updateStatusAndClock();
+
+document.querySelectorAll('[data-mode]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('[data-mode]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    clockMode = btn.dataset.mode;
+    const { hh, mm, ss, ampm } = getTimeParts();
+    setDigitInstant('h-tens', hh[0]); setDigitInstant('h-ones', hh[1]);
+    setDigitInstant('m-tens', mm[0]); setDigitInstant('m-ones', mm[1]);
+    setDigitInstant('s-tens', ss[0]); setDigitInstant('s-ones', ss[1]);
+    document.getElementById('statusTime').textContent = clockMode === '12' ? `${hh}:${mm}:${ss} ${ampm}` : `${hh}:${mm}:${ss}`;
+    const badge = document.getElementById('ampmBadge');
+    if(clockMode === '12'){ badge.style.display = 'flex'; badge.textContent = ampm; }
+    else{ badge.style.display = 'none'; }
+  });
+});
+
+const ALL_ZONES = [
+  ["New York","America/New_York"], ["Los Angeles","America/Los_Angeles"],
+  ["London","Europe/London"], ["Paris","Europe/Paris"],
+  ["Berlin","Europe/Berlin"], ["Dubai","Asia/Dubai"],
+  ["Mumbai","Asia/Kolkata"], ["Singapore","Asia/Singapore"],
+  ["Tokyo","Asia/Tokyo"], ["Sydney","Australia/Sydney"],
+  ["São Paulo","America/Sao_Paulo"], ["Johannesburg","Africa/Johannesburg"],
+  ["Moscow","Europe/Moscow"], ["Toronto","America/Toronto"]
+];
+let activeClocks = ["London","Tokyo","New York","Mumbai"];
+
+const tzSelect = document.getElementById('tzSelect');
+ALL_ZONES.forEach(([city]) => {
+  const o = document.createElement('option'); o.value = city; o.textContent = city;
+  tzSelect.appendChild(o);
+});
+
+function renderClocks(){
+  const grid = document.getElementById('clockGrid');
+  grid.innerHTML = '';
+  const localOffset = -new Date().getTimezoneOffset();
+  activeClocks.forEach(city=>{
+    const entry = ALL_ZONES.find(z=>z[0]===city);
+    if(!entry) return;
+    const [name, zone] = entry;
+    const now = new Date();
+    const timeStr = new Intl.DateTimeFormat('en-GB',{ hour:'2-digit', minute:'2-digit', second:'2-digit', timeZone:zone }).format(now);
+    const zoneOffsetMin = getOffsetMinutes(zone);
+    const diff = (zoneOffsetMin - localOffset)/60;
+    const diffLabel = diff===0 ? 'same as you' : (diff>0? '+'+diff+'h' : diff+'h');
+    const card = document.createElement('div');
+    card.className='clock-card';
+    card.innerHTML = `<div class="city">${name}</div><div class="time">${timeStr}</div><div class="diff">${diffLabel} vs local</div>`;
+    grid.appendChild(card);
+  });
+}
+function getOffsetMinutes(zone){
+  const now = new Date();
+  const fmt = new Intl.DateTimeFormat('en-US',{ timeZone:zone, hour:'numeric', minute:'numeric', hour12:false, timeZoneName:'shortOffset'});
+  const parts = fmt.formatToParts(now);
+  const off = parts.find(p=>p.type==='timeZoneName')?.value || 'GMT+0';
+  const m = off.match(/GMT([+-]\d+)(?::(\d+))?/);
+  if(!m) return 0;
+  const h = parseInt(m[1],10);
+  const min = m[2]? parseInt(m[2],10) : 0;
+  return h*60 + (h<0? -min : min);
+}
+document.getElementById('addTzBtn').addEventListener('click', ()=>{
+  const city = tzSelect.value;
+  if(!activeClocks.includes(city)){ activeClocks.push(city); renderClocks(); }
+});
+renderClocks();
+setInterval(renderClocks, 1000);
+</script>
+</body>
+</html>
